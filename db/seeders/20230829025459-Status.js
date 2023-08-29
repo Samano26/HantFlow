@@ -6,7 +6,7 @@ module.exports = {
     
     const status = ['All', 'Screening', 'Video interview', 'Employer CV', 'Employer intrview', 'Send offer', 'Accep offer', 'Reject']
     await queryInterface.bulkInsert('Statuses', 
-      status.map((el) => ({status: el}))
+    status.map((el) => ({ status: el, createdAt: new Date(), updatedAt: new Date() }))
        
      , {});
   

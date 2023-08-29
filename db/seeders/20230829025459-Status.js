@@ -1,0 +1,23 @@
+
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up (queryInterface, Sequelize) {
+    
+    const status = ['All', 'Screening', 'Video interview', 'Employer CV', 'Employer intrview', 'Send offer', 'Accep offer', 'Reject']
+    await queryInterface.bulkInsert('Statuses', 
+      status.map((el) => ({status: el}))
+       
+     , {});
+  
+  },
+
+  async down (queryInterface, Sequelize) {
+    /**
+     * Add commands to revert seed here.
+     *
+     * Example:
+     * await queryInterface.bulkDelete('People', null, {});
+     */
+  }
+};

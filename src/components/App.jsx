@@ -16,9 +16,9 @@ export default function App({ vacancies, oneVacancy }) {
 
   const submitHandler = async (e, id, input) => {
     e.preventDefault();
-    const res = axios.post('/api/vacancy/editVacancy', { ...input, id })
-    // setAllVacancy(prev => prev.map(el => el.id !== id ? el : res.data))
-    // console.log(res.data)
+    const res = await axios.post('/api/vacancy/editVacancy', { ...input, id })
+    setAllVacancy(prev => prev.map(el => el.id !== res.data.id ? el : res.data))
+    console.log(res.data)
   };
   return (
     <div className="container">

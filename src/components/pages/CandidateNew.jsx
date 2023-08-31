@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import axios from 'axios';
 
+
 function ButtonsExample() {
   const [inputs, setInputs] = useState({
     name: '',
@@ -108,16 +109,6 @@ function ButtonsExample() {
       <InputGroup className="mb-3">
         <Form.Control
           onChange={changeHandler}
-          placeholder="Vacaincy"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-          name="vacaincyId"
-          className={invalidInputs.includes('vacaincyId') ? 'is-invalid' : ''}
-        />
-      </InputGroup>
-      <InputGroup className="mb-3">
-        <Form.Control
-          onChange={changeHandler}
           placeholder="Experience"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
@@ -135,6 +126,12 @@ function ButtonsExample() {
           className={invalidInputs.includes('salary') ? 'is-invalid' : ''}
         />
       </InputGroup>
+      {/* <Form.Select aria-label="Default select example">
+      <option>Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </Form.Select> */}
       <div className="d-grid gap-2">
         <Button type="submit" variant="primary" size="lg">
           Добавить

@@ -5,25 +5,31 @@ import InputGroup from 'react-bootstrap/InputGroup';
 
 function ButtonsExample() {
 
-  const [name,setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [number, setNumber] = useState()
-  const [age, setAge] = useState()
-  const [gender, setGender] = useState('')
+  // const [name,setName] = useState('')
+  // const [email, setEmail] = useState('')
+  // const [number, setNumber] = useState()
+  // const [age, setAge] = useState()
+  // const [gender, setGender] = useState('')
 
   
   return (
-    <form> 
+    <form>
       <InputGroup className="mb-3">
-        <Button variant="outline-secondary" id="button-addon1">
-          Добавить
-        </Button>
         <Form.Control
-          aria-label="Example text with button addon"
-          aria-describedby="basic-addon1"
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
         />
+        <InputGroup className="mb-3">
+        <Form.Control
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+        />
+        <Button variant="outline-secondary" id="button-addon2">
+          Button
+        </Button>
       </InputGroup>
-
       <InputGroup className="mb-3">
         <Form.Control
           placeholder="Recipient's username"
@@ -33,6 +39,17 @@ function ButtonsExample() {
         <Button variant="outline-secondary" id="button-addon2">
           Button
         </Button>
+      </InputGroup>
+      <InputGroup className="mb-3">
+        <Form.Control
+          placeholder="Recipient's username"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+        />
+        <Button variant="outline-secondary" id="button-addon2">
+          Button
+        </Button>
+      </InputGroup>
       </InputGroup>
 
       <InputGroup className="mb-3">

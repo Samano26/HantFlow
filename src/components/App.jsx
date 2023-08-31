@@ -17,11 +17,9 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/admin/log" element={<AdminLog />} />
         <Route path="/admin/reg" element={<AdminReg />} />
-
         <Route path="/vacancy" element={<Vacancy />} />
         <Route path="/vacancy/new" element={<VacancyNew />} />
         <Route path="/vacancy/:id" element={<VacancyCard />} />
-
         <Route path="/candidate" element={<Candidate />} />
         <Route path="/candidate/:id" element={<CandidateCard />} />
         <Route path="/candidate/new" element={<CandidateNew />} />

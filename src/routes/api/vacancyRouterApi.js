@@ -8,13 +8,13 @@ router.post('/addVacancy', async (req, res) => {
     res.json(newVacancy);
 });
 
-// router.get('/deleteRaccoon/:id', async (req, res) => {
-//     try {
-//         await Raccoon.destroy({ where: { id: req.params.id } });
-//         return res.sendStatus(200);
-//     } catch (err) {
-//         return res.sendStatus(500);
-//     }
-// });
+router.get('/deleteVacancy/:id', async (req, res) => {
+    try {
+        await Vacancy.destroy({ where: { id: req.params.id } });
+        return res.sendStatus(200);
+    } catch (err) {
+        return res.sendStatus(500);
+    }
+});
 
 export default router;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Vacancy from './pages/Vacancy';
 import Home from './pages/Home';
@@ -10,8 +10,8 @@ import VacancyCard from './pages/VacancyCard';
 import CandidateCard from './pages/CandidateCard';
 import CandidateNew from './pages/CandidateNew';
 
-export default function App() {
-  const [allVacancy, setAllVacancy] = useState()
+export default function App({vacancies}) {
+  const [allVacancy, setAllVacancy] = useState([])
 
   return (
     <div className="container">

@@ -1,10 +1,4 @@
-// import React from 'react'
 
-// export default function AdminLog() {
-//   return (
-//     <div>AdminLog</div>
-//   )
-// }
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Col, Modal, Nav, Row } from 'react-bootstrap';

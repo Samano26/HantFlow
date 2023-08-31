@@ -1,18 +1,18 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
-import { User } from '../../../db/models';
+import { Admin } from '../../../db/models';
 
 const authRouter = express.Router();
 
 authRouter.post('/signup', async (req, res) => {
   const { email, password, name } = req.body;
   const hashpass = await bcrypt.hash(password, 10);
-  const [user, created] = await User.findOrCreate({
-    where: { email },
-    defaults: { hashpass, name },
+  const [admin, created] = await Admin.findOrCreate({
+    where: { emailAdmin: email },
+    defaults: { password: hashpass, nameAdmin: name },
   });
   if (created) {
-    req.session.user = { ...user.get(), hashpass: undefined };
+    req.session.admin = { ...admin.get(), password: undefined };
     return res.sendStatus(200);
   }
   return res.status(400).json({ message: 'Email already exists' });
@@ -20,22 +20,22 @@ authRouter.post('/signup', async (req, res) => {
 
 authRouter.post('/login', async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ where: { email } });
-  if (!user) {
+  const admin = await Admin.findOne({ where: { emailAdmin: email } });
+  if (!admin) {
     return res.status(400).json({ message: 'Email not found' });
   }
-  const isCorrect = await bcrypt.compare(password, user.hashpass);
+  const isCorrect = await bcrypt.compare(password, admin.password);
   if (!isCorrect) {
     return res.status(400).json({ message: 'Incorrect password' });
   }
 
-  req.session.user = { ...user.get(), hashpass: undefined };
+  req.session.admin = { ...admin.get(), password: undefined };
   res.sendStatus(200);
 });
 
 authRouter.get('/logout', (req, res) => {
   req.session.destroy();
-  res.clearCookie('user_sid');
+  res.clearCookie('admin_sid');
   res.sendStatus(200);
 });
 

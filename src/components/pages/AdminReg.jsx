@@ -1,10 +1,4 @@
-// import React from 'react'
 
-// export default function AdminReg() {
-//   return (
-//     <div>AdminReg</div>
-//   )
-// }
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Col, Nav, Row } from 'react-bootstrap';

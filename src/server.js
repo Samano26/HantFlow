@@ -11,6 +11,7 @@ import adminRouterRender from './routes/render/adminRouterRender'
 import vacancyRouterRender from './routes/render/vacancyRouterRender';
 // import candidateRouterApi from './routes/api/candidateRouterApi';
 import candidateRouterRender from './routes/render/candidateRouterRender';
+import apiRouter from './routes/api/candidateRouterApi';
 
 require('dotenv').config();
 
@@ -55,6 +56,7 @@ app.use('/vacancy/', vacancyRouterRender);
 // app.use('/api/candidate/', candidateRouterApi);
 app.use('/candidate/', candidateRouterRender);
 
+app.use('/api/', apiRouter)
 
 
 

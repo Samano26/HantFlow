@@ -1,71 +1,121 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import axios from 'axios';
 
 function ButtonsExample() {
+  const [inputs, setInputs] = useState({
+    name: '',
+    email: '',
+    gender: '',
+    experiense: '',
+    tel: '',
+    status: '',
+    vacaincy: '',
+  });
 
-  // const [name,setName] = useState('')
-  // const [email, setEmail] = useState('')
-  // const [number, setNumber] = useState()
-  // const [age, setAge] = useState()
-  // const [gender, setGender] = useState('')
-
-  
+  const changeHandler = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const handleSubmit = async (event) => {
+    console.log(1111    );
+    event.preventDefault();
+    try {
+      const response = await axios.post('/api/addCandidate', inputs);
+      console.log(response.data);
+      setInputs('');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  console.log(inputs);
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <InputGroup className="mb-3">
         <Form.Control
-          placeholder="Recipient's username"
+          onChange={changeHandler}
+          placeholder="name"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
+          name="name"
         />
-        <InputGroup className="mb-3">
-        <Form.Control
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
-        <Button variant="outline-secondary" id="button-addon2">
-          Button
-        </Button>
       </InputGroup>
       <InputGroup className="mb-3">
         <Form.Control
-          placeholder="Recipient's username"
+          onChange={changeHandler}
+          placeholder="email"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
+          name="email"
         />
-        <Button variant="outline-secondary" id="button-addon2">
-          Button
-        </Button>
       </InputGroup>
       <InputGroup className="mb-3">
         <Form.Control
-          placeholder="Recipient's username"
+          onChange={changeHandler}
+          placeholder="age"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
+          name="age"
         />
-        <Button variant="outline-secondary" id="button-addon2">
-          Button
-        </Button>
       </InputGroup>
-      </InputGroup>
-
       <InputGroup className="mb-3">
-        <Button variant="outline-secondary">Button</Button>
-        <Button variant="outline-secondary">Button</Button>
-        <Form.Control aria-label="Example text with two button addons" />
-      </InputGroup>
-
-      <InputGroup>
         <Form.Control
-          placeholder="Recipient's username"
-          aria-label="Recipient's username with two button addons"
+          onChange={changeHandler}
+          placeholder="gander"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+          name="gender"
         />
-        <Button variant="outline-secondary">Button</Button>
-        <Button variant="outline-secondary">Button</Button>
       </InputGroup>
+      <InputGroup className="mb-3">
+        <Form.Control
+          onChange={changeHandler}
+          placeholder="tel"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+          name="tel"
+        />
+      </InputGroup>
+      <InputGroup className="mb-3">
+        <Form.Control
+          onChange={changeHandler}
+          placeholder="status"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+          name="statusId"
+        />
+      </InputGroup>
+      <InputGroup className="mb-3">
+        <Form.Control
+          onChange={changeHandler}
+          placeholder="vacaincy"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+          name="vacaincyId"
+        />
+      </InputGroup>
+      <InputGroup className="mb-3">
+        <Form.Control
+          onChange={changeHandler}
+          placeholder="experience"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+          name="experience"
+        />
+      </InputGroup>
+      <InputGroup className="mb-3">
+        <Form.Control
+          onChange={changeHandler}
+          placeholder="salary"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+          name="salary"
+        />
+      </InputGroup>
+      <Button type="submit" variant="outline-secondary" id="button-addon2">
+        Button
+      </Button>
     </form>
   );
 }

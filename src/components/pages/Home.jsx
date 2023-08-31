@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div>
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">My App</Navbar.Brand>
+        <Navbar.Brand href="#home">HOME</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
@@ -22,7 +22,7 @@ export default function Home() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <div>Home</div>
+      <div>LOGO</div>
     </div>
   )
 }

@@ -5,8 +5,12 @@ import InputGroup from 'react-bootstrap/InputGroup';
 
 function ButtonsExample() {
 
-  // const [name,setName] = useState('
-  // const [email, setEmail] = useState('')
+  const [name,setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [number, setNumber] = useState()
+  const [age, setAge] = useState()
+  const [gender, setGender] = useState('')
+
   
   return (
     <form> 

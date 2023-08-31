@@ -11,7 +11,11 @@ import adminRouterRender from './routes/render/adminRouterRender'
 import vacancyRouterRender from './routes/render/vacancyRouterRender';
 // import candidateRouterApi from './routes/api/candidateRouterApi';
 import candidateRouterRender from './routes/render/candidateRouterRender';
+<<<<<<< HEAD
 import apiRouter from './routes/api/candidateRouterApi';
+=======
+import adminRouterApi from './routes/api/adminRouterApi';
+>>>>>>> main
 
 require('dotenv').config();
 
@@ -20,7 +24,7 @@ const app = express();
 const FileStore = store(session);
 
 const sessionConfig = {
-  name: 'user_sid',
+  name: 'admin_sid',
   secret: process.env.SESSION_SECRET ?? 'test',
   resave: true,
   store: new FileStore(),
@@ -56,8 +60,12 @@ app.use('/vacancy/', vacancyRouterRender);
 // app.use('/api/candidate/', candidateRouterApi);
 app.use('/candidate/', candidateRouterRender);
 
+<<<<<<< HEAD
 app.use('/api/', apiRouter)
 
+=======
+app.use('/api/auth', adminRouterApi);
+>>>>>>> main
 
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

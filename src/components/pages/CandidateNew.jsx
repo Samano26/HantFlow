@@ -8,19 +8,32 @@ function ButtonsExample() {
   const [inputs, setInputs] = useState({
     name: '',
     email: '',
+    age: '',
     gender: '',
-    experiense: '',
+    experience: '',
     tel: '',
-    status: '',
-    vacaincy: '',
+    statusId: 'All',
+    vacaincyId: '',
+    salary: '',
   });
+
+  const [invalidInputs, setInvalidInputs] = useState([]);
 
   const changeHandler = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
   const handleSubmit = async (event) => {
-    console.log(1111    );
     event.preventDefault();
+
+    // Проверяем, есть ли незаполненные поля
+    const invalidFields = Object.keys(inputs).filter((key) => !inputs[key]);
+    setInvalidInputs(invalidFields);
+
+    if (invalidFields.length > 0) {
+      return;
+    }
+
     try {
       const response = await axios.post('/api/addCandidate', inputs);
       console.log(response.data);
@@ -29,93 +42,104 @@ function ButtonsExample() {
       console.error(error);
     }
   };
-  console.log(inputs);
+
   return (
     <form onSubmit={handleSubmit}>
       <InputGroup className="mb-3">
         <Form.Control
           onChange={changeHandler}
-          placeholder="name"
+          placeholder="Name"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           name="name"
+          className={invalidInputs.includes('name') ? 'is-invalid' : ''}
         />
       </InputGroup>
       <InputGroup className="mb-3">
         <Form.Control
           onChange={changeHandler}
-          placeholder="email"
+          placeholder="Email"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           name="email"
+          className={invalidInputs.includes('email') ? 'is-invalid' : ''}
         />
       </InputGroup>
       <InputGroup className="mb-3">
         <Form.Control
           onChange={changeHandler}
-          placeholder="age"
+          placeholder="Age"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           name="age"
+          className={invalidInputs.includes('age') ? 'is-invalid' : ''}
         />
       </InputGroup>
       <InputGroup className="mb-3">
         <Form.Control
           onChange={changeHandler}
-          placeholder="gander"
+          placeholder="Gander"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           name="gender"
+          className={invalidInputs.includes('gender') ? 'is-invalid' : ''}
         />
       </InputGroup>
       <InputGroup className="mb-3">
         <Form.Control
           onChange={changeHandler}
-          placeholder="tel"
+          placeholder="Phone"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           name="tel"
+          className={invalidInputs.includes('tel') ? 'is-invalid' : ''}
         />
       </InputGroup>
       <InputGroup className="mb-3">
         <Form.Control
           onChange={changeHandler}
-          placeholder="status"
+          placeholder="Status"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           name="statusId"
+          className={invalidInputs.includes('statusId') ? 'is-invalid' : ''}
         />
       </InputGroup>
       <InputGroup className="mb-3">
         <Form.Control
           onChange={changeHandler}
-          placeholder="vacaincy"
+          placeholder="Vacaincy"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           name="vacaincyId"
+          className={invalidInputs.includes('vacaincyId') ? 'is-invalid' : ''}
         />
       </InputGroup>
       <InputGroup className="mb-3">
         <Form.Control
           onChange={changeHandler}
-          placeholder="experience"
+          placeholder="Experience"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           name="experience"
+          className={invalidInputs.includes('experience') ? 'is-invalid' : ''}
         />
       </InputGroup>
       <InputGroup className="mb-3">
         <Form.Control
           onChange={changeHandler}
-          placeholder="salary"
+          placeholder="Salary"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           name="salary"
+          className={invalidInputs.includes('salary') ? 'is-invalid' : ''}
         />
       </InputGroup>
-      <Button type="submit" variant="outline-secondary" id="button-addon2">
-        Button
-      </Button>
+      <div className="d-grid gap-2">
+        <Button type="submit" variant="primary" size="lg">
+          Добавить
+        </Button>
+      </div>
     </form>
   );
 }

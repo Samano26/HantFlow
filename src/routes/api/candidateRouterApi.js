@@ -1,12 +1,12 @@
 import express from 'express';
-import { Candidate } from '../../../db/models';
+import { Candidat } from '../../../db/models';
 
 const apiRouter = express.Router();
 
 apiRouter.post('/addCandidate', async (req, res) => {
   const { name, email, gender, tel, experience, statusId, vacaincyId, age, salary } = req.body;
   try {
-    const newCandidate = await Candidate.create({
+    const newCandidate = await Candidat.create({
       nameCandidats: name,
       age,
       emailCandidate: email,

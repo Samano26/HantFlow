@@ -1,15 +1,58 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 
-export default function VacancyCard({ vacancy, deleteHandler }) {
+export default function VacancyCard({ vacancy, deleteHandler, submitHandler }) {
+  const [edit, setEdit] = useState(true);
+
+  const clickHandler = () => {
+    setEdit(prev => !prev);
+  }
+
+  const [input, setInput] = useState({ nameVacancy: '' })
+
+  const changeHandler = (e) => {
+    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };  
+
   return (
     <div className="card" style={{ width: '18rem' }}>
-      {/* <img src={vacancy.img} className="card-img-top" alt="..." /> */}
       <div className="card-body">
-        <h5 className="card-title">{vacancy.nameVacancy}</h5>
-        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href={`/raccoons/${vacancy.id}`} className="btn btn-primary">See this guy</a>
+        {edit ?
+          <>
+            <h5 className="card-title">{vacancy.nameVacancy}</h5>
+            <button type="button" onClick={clickHandler} className="btn btn-primary">Edit</button>
+          </>
+          :
+
+          <form onSubmit={submitHandler}>
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label">
+                <input
+                  name="nameVacancy"
+                  type="text"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder={vacancy.nameVacancy}
+                  value={input.nameVacancy}
+                  onChange={changeHandler}
+                />
+              </label>
+            </div>
+            <button
+              type="submit"
+              onClick={(e) => {
+                clickHandler()
+                submitHandler(e, vacancy.id, input)
+              }
+              }
+              className="btn btn-primary">Send</button>
+          </form>
+        }
+        {' '}
         <button type="button" onClick={() => deleteHandler(vacancy.id)} className="btn btn-primary">Delete</button>
       </div>
-    </div>
+    </div >
+
   )
 }

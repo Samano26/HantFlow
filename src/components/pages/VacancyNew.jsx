@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function VacancyNew({setAllVacancy}) {
+export default function VacancyNew({ setAllVacancy }) {
   const [input, setInput] = useState({ nameVacancy: '' })
 
   const changeHandler = (e) => {
@@ -22,6 +22,7 @@ export default function VacancyNew({setAllVacancy}) {
     );
     const newVacancy = await response.json();
     setAllVacancy((prev) => [newVacancy, ...prev]);
+    window.location = '/vacancy/'
   };
 
   return (

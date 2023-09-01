@@ -1,19 +1,28 @@
 import express from 'express';
-import { Candidat } from '../../../db/models'
 
-const candidateRouterApi = express.Router();
+import { Candidat, Status, Vacancy } from '../../../db/models';
 
-candidateRouterApi.post("/:id", async (req, res) => {
+const router = express.Router();
 
-    const oneperson = await Candidat.findOne({where: {id: req.params.id}})
-    // console.log(oneperson);
-    return res.status(200).json(oneperson)
-})
-candidateRouterApi.post("/status/:id", async (req, res) => {
 
-    const oneperson = await Candidat.findAll({where: {id: req.params.id}})
-    // console.log(oneperson);
-    return res.status(200).json(oneperson)
-})
 
-export default candidateRouterApi;
+// router.get('/', (req, res) => res.render('Layout'));
+router.get('/new', (req, res) => res.render('Layout'));
+
+
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const allCandidates = await Candidat.findAll({where:{vacaincyId:id}});
+  const allStatus = await Status.findAll();
+  const vacancies = await Vacancy.findAll();
+  const initState = {
+    allCandidates,
+    allStatus,
+    vacancies,
+  };
+  res.render('Layout', initState);
+});
+
+// router.get('/:id', (req, res) => res.render('Layout')); // /new -> id === new
+
+export default router;

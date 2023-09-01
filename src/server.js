@@ -7,7 +7,7 @@ import jsxRender from './utils/jsxRender';
 import indexRouter from './routes/indexRouter';
 // import adminRouterApi from './routes/api/adminRouter';
 import adminRouterRender from './routes/render/adminRouterRender'
-// import vacancyRouterApi from './routes/api/vacancyRouterApi';
+import vacancyRouterApi from './routes/api/vacancyRouterApi';
 import vacancyRouterRender from './routes/render/vacancyRouterRender';
 // import candidateRouterApi from './routes/api/candidateRouterApi';
 import candidateRouterRender from './routes/render/candidateRouterRender';
@@ -51,7 +51,8 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/api/admin/', adminRouterApi);
 app.use('/admin/', adminRouterRender);
-// app.use('/api/vacancy/', vacancyRouterApi);
+
+app.use('/api/vacancy/', vacancyRouterApi);
 app.use('/vacancy/', vacancyRouterRender);
 // app.use('/api/candidate/', candidateRouterApi);
 app.use('/candidate/', candidateRouterRender);

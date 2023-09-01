@@ -49,7 +49,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
-// app.use('/api/admin/', adminRouterApi);
+app.use('/api/admin/', adminRouterApi);
 app.use('/admin/', adminRouterRender);
 // app.use('/api/vacancy/', vacancyRouterApi);
 app.use('/vacancy/', vacancyRouterRender);

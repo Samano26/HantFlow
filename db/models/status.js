@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Candidat }) {
       this.hasMany(Candidat, { foreignKey: 'vacaincyId' })
+      this.hasMany(Candidat, {foreignKey: 'statusId'})
     }
   }
   Status.init({

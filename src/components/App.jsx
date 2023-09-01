@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import Vacancy from './pages/Vacancy';
-import Home from './pages/Home';
 import AdminLog from './pages/AdminLog';
 import AdminReg from './pages/AdminReg';
 import VacancyNew from './pages/VacancyNew';
 import Candidate from './pages/Candidate';
-import VacancyCard from './pages/VacancyCard';
 import CandidateCard from './pages/CandidateCard';
 import CandidateNew from './pages/CandidateNew';
+import Home from './pages/Home';
+import VacancyCard from './pages/VacancyCard';
 
 export default function App({ vacancies, oneVacancy }) {
   const [allVacancy, setAllVacancy] = useState(vacancies)
@@ -36,5 +36,9 @@ export default function App({ vacancies, oneVacancy }) {
         <Route path="/candidate/new" element={<CandidateNew />} />
       </Routes>
     </div>
+<<<<<<< HEAD
   )
+=======
+  );
+>>>>>>> main
 }

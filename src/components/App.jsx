@@ -36,9 +36,5 @@ export default function App({ vacancies, oneVacancy }) {
         <Route path="/candidate/new" element={<CandidateNew />} />
       </Routes>
     </div>
-<<<<<<< HEAD
   )
-=======
-  );
->>>>>>> main
 }

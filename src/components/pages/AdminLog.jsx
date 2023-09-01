@@ -5,8 +5,10 @@ import { Col, Modal, Nav, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+
 export default function LoginPage() {
   const [err, setErr] = useState(null);
+  
 
   const handleClose = () => setErr(null);
 
@@ -15,8 +17,8 @@ export default function LoginPage() {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
     try {
-      const res = await axios.post('/api/auth/login', data);
-      if (res.status === 200) window.location = '/';
+      const res = await axios.post('/api/admin/log', data);
+      if (res.status === 200) window.location = '/candidate'; 
     } catch (error) {
       setErr(error.response.data.message);
     }
@@ -39,7 +41,7 @@ export default function LoginPage() {
 
         <Row className="justify-content-center mt-3 mb-3 text-center">
           <Col>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" >
               Submit
             </Button>
           </Col>

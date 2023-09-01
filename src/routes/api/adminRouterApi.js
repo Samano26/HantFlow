@@ -4,7 +4,7 @@ import { Admin } from '../../../db/models';
 
 const authRouter = express.Router();
 
-authRouter.post('/signup', async (req, res) => {
+authRouter.post('/reg', async (req, res) => {
   const { email, password, name } = req.body;
   const hashpass = await bcrypt.hash(password, 10);
   const [admin, created] = await Admin.findOrCreate({
@@ -18,7 +18,7 @@ authRouter.post('/signup', async (req, res) => {
   return res.status(400).json({ message: 'Email already exists' });
 });
 
-authRouter.post('/login', async (req, res) => {
+authRouter.post('/log', async (req, res) => {
   const { email, password } = req.body;
   const admin = await Admin.findOne({ where: { emailAdmin: email } });
   if (!admin) {

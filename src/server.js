@@ -48,7 +48,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
-// app.use('/api/admin/', adminRouterApi);
+app.use('/api/admin/', adminRouterApi);
 app.use('/admin/', adminRouterRender);
 
 // app.use('/api/vacancy/', vacancyRouterApi);
@@ -57,7 +57,7 @@ app.use('/vacancy/', vacancyRouterRender);
 // app.use('/api/candidate/', candidateRouterApi);
 app.use('/candidate/', candidateRouterRender);
 
-app.use('/api/auth', adminRouterApi);
+
 
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

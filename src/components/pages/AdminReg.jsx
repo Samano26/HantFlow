@@ -22,7 +22,7 @@ export default function SignUpPage() {
       alert('Passwords do not match');
       return;
     }
-    const response = await axios.post('/api/auth/signup', formData);
+    const response = await axios.post('/api/admin/reg', formData);
     if (response.status === 200) {
       window.location.href = '/';
     }

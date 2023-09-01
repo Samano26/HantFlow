@@ -1,7 +1,10 @@
+
 import express from 'express'
 import { Vacancy } from '../../../db/models';
 
-const router = express.Router()
+
+
+const router = express.Router();
 
 router.get('/', async (req, res) => {
   const vacancies = await Vacancy.findAll();

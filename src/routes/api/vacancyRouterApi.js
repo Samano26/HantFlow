@@ -14,8 +14,7 @@ router.post('/editVacancy', async (req, res) => {
     const newVacancy = await Vacancy.findByPk(id);
     newVacancy.nameVacancy = nameVacancy
     await newVacancy.save()
-    // res.status(200).json(newVacancy)
-    res.sendStatus(200)
+    res.status(200).json(newVacancy)
 
 
 });

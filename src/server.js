@@ -6,11 +6,12 @@ import path from 'path';
 import jsxRender from './utils/jsxRender';
 import indexRouter from './routes/indexRouter';
 // import adminRouterApi from './routes/api/adminRouter';
-import adminRouterRender from './routes/render/adminRouterRender'
+import adminRouterRender from './routes/render/adminRouterRender';
 // import vacancyRouterApi from './routes/api/vacancyRouterApi';
 import vacancyRouterRender from './routes/render/vacancyRouterRender';
 // import candidateRouterApi from './routes/api/candidateRouterApi';
 import candidateRouterRender from './routes/render/candidateRouterRender';
+import candidateRouterApi from './routes/api/candidateRouterApi';
 
 require('dotenv').config();
 
@@ -47,15 +48,12 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 // app.use('/api/admin/', adminRouterApi);
-app.use('/admin/', adminRouterRender);
+app.use('/admin', adminRouterRender);
 
 // app.use('/api/vacancy/', vacancyRouterApi);
-app.use('/vacancy/', vacancyRouterRender);
+app.use('/vacancy', vacancyRouterRender);
 
-// app.use('/api/candidate/', candidateRouterApi);
-app.use('/candidate/', candidateRouterRender);
-
-
-
+app.use('/api/candidate', candidateRouterApi);
+app.use('/candidates', candidateRouterRender);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

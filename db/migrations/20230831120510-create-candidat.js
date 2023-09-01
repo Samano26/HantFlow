@@ -1,5 +1,3 @@
-
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -8,57 +6,56 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       nameCandidats: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       age: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       emailCandidate: {
         type: Sequelize.STRING,
-        unique: true
       },
       gender: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       salary: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       experience: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       tel: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       vacaincyId: {
         references: {
           model: 'Vacancies',
           key: 'id',
-          },
-          onDelete: 'CASCADE',
-        type: Sequelize.INTEGER
-      },
-      statusId: {
-      references: {
-      model: 'Statuses',
-      key: 'id',
-      },
-      onDelete: 'CASCADE',
+        },
+        onDelete: 'CASCADE',
         type: Sequelize.INTEGER,
       },
+      statusId: {
+        references: {
+        model: 'Statuses',
+        key: 'id',
+        },
+        onDelete: 'CASCADE',
+          type: Sequelize.INTEGER,
+        },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Candidats');
-  }
+  },
 };
